@@ -46,20 +46,29 @@ include "includes/nav.php"
 
         while ($row = $result->fetch_assoc($result)) {
             if($resultCheck > 0) {
-                echo "<div class="columnacoche1"><div class="coche">"
-                . $row['fotoruta']."<div class="nombreCatalogo">
-                <a>" . $row['nombre'] ."</a><div>" . "<div class="precioCatalogo">
-                <a>".  $num ."</a></div>" . 
-                "<div class="coche">" 
-                . $row['fotoruta']."<div class="nombreCatalogo">
-                <a>" . $row['nombre'] ."</a><div>" . "<div class="precioCatalogo">
-                <a>".  $num ."</a></div>" .
-                "<div class="coche">" 
-                . $row['fotoruta']."<div class="nombreCatalogo">
-                <a>" . $row['nombre'] ."</a><div>" . "<div class="precioCatalogo">
-                <a>".  $num ."</a></div></div>"
-                
-                ;
+                echo "<div class="columnacoche1">"
+                    . "<div class="coche">"
+                        . "<img src=" . $row['fotoruta'] . " width="300px">"
+                        ."<div class="nombreCatalogo"><a>"
+                            . $row['nombre'] ."</a></div>"
+                        . "<div class="precioCatalogo"><a>"
+                            .  $num ."</a></div>"
+                    . "</div>" 
+                    ."<div class="coche">" 
+                        . "<img src=" . $row['fotoruta'] . " width="300px">"
+                        ."<div class="nombreCatalogo"><a>"
+                            . $row['nombre'] ."</a></div>"
+                        . "<div class="precioCatalogo"><a>"
+                            .  $num ."</a></div>"
+                    . "</div>"
+                    ."<div class="coche">" 
+                        . "<img src=" . $row['fotoruta'] . " width="300px">"
+                        ."<div class="nombreCatalogo"><a>"
+                            . $row['nombre'] ."</a></div>"
+                        . "<div class="precioCatalogo"><a>"
+                            .  $num ."</a></div>"
+                    . "</div>"
+                . "</div>";
             }
             }
             ?>

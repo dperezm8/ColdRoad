@@ -30,16 +30,20 @@ include "includes/nav.php"
 
         while ($row = $result->fetch_assoc($result)) {
             if($resultCheck > 0) {
-                echo "<div class="columnagaleria1"><div class="galeria1">"
-                . "<a href="coche1.php">"
-                . "<img src=" . $row['fotoruta'] . " width="300px">" 
-                . "</div>" . 
-                "<div class="galeria2">" . "<a href="coche1.php">"
-                . "<img src=" . $row['fotoruta1'] . " width="300px">"  
-                . "</div>" .
-                "<div class="galeria3">" . "<a href="coche1.php">"
-                . "<img src=" . $row['fotoruta2'] . " width="300px">" 
-                . "</div></div>";
+                echo "<div class="columnagaleria1">"
+                    . "<div class="galeria1">"
+                        . "<a href="coche1.php">"
+                        . "<img src=" . $row['fotoruta'] . " width="300px">" 
+                    . "</div>"
+                    . "<div class="galeria2">"
+                        . "<a href="coche1.php">"
+                        . "<img src=" . $row['fotoruta1'] . " width="300px">"  
+                    . "</div>" 
+                    ."<div class="galeria3">"
+                    . "<a href="coche1.php">"
+                    . "<img src=" . $row['fotoruta2'] . " width="300px">" 
+                    . "</div>"
+                . "</div>";
             }
             }
             ?>
