@@ -46,8 +46,7 @@ include "includes/nav.php"
 
         while ($row = $result->fetch_assoc($result)) {
             if($resultCheck > 0) {
-                echo "<div class="columnacoche1">" . 
-                "<div class="coche">" 
+                echo "<div class="columnacoche1"><div class="coche">"
                 . $row['fotoruta']."<div class="nombreCatalogo">
                 <a>" . $row['nombre'] ."</a><div>" . "<div class="precioCatalogo">
                 <a>".  $num ."</a></div>" . 
