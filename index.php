@@ -1,20 +1,3 @@
-
-<?php
-include_once 'php/dbcoches.php';
-
-$sql = "SELECT *, count(*) from coches
-        ORDER BY RAND()
-        LIMIT 1;";
-
-$result = $conn->query($sql);
-
-$resultCheck = mysqli_num_rows($result);
-if ($resultCheck>0) {
-    $row = mysqli_fetch_assoc($result);
-}
-?>
-
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -39,11 +22,21 @@ include "includes/nav.php"
         <div class="cantidadcoches">
             <a>CANTIDAD DE COCHES EN STOCK:
                 <STRONG>
-                    <?php
+                <?php
+            require_once("php/dbcoches.php");
+            $result = $conn->query("SELECT * FROM coches ORDER BY RAND();");
+    
+            $resultCheck = mysqli_num_rows($result);
                     if ($resultCheck>0) {
-                        echo ($row['count(*)']);
+                        $row = mysqli_fetch_assoc($result);
                     }
-                    ?>
+    
+            if($resultCheck > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo $row['count(*)'];
+                }
+            }
+            ?>
                 </STRONG>
             </a>
         </div>
@@ -54,22 +47,17 @@ include "includes/nav.php"
         </div>
         <div class="cocheindex">
             <?php
-            include 'php/dbcoches.php';
-            $sql = "SELECT * from coches 
-                    ORDER BY RAND();";
-
-            $result = $conn->query($sql);
-
+            require_once("php/dbcoches.php");
+            $result = $conn->query("SELECT * FROM coches ORDER BY RAND();");
+    
             $resultCheck = mysqli_num_rows($result);
-            if ($resultCheck>0) {
-                $row = mysqli_fetch_assoc($result);
-            }
-
-            if ($resultCheck>0) {
-                if( $row['fotoruta'] ){
-                    ?>
-                    <img src="<?php echo $row['fotoruta'];?>" width="400px"">
-                <?php
+                    if ($resultCheck>0) {
+                        $row = mysqli_fetch_assoc($result);
+                    }
+    
+            if($resultCheck > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<img src=" . $row['fotoruta'] . " width='400px'>";
                 }
             }
             ?>
