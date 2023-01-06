@@ -44,30 +44,31 @@ include "includes/nav.php"
                     $row = mysqli_fetch_assoc($result);
                 }
 
-        while ($row = $result->fetch_assoc($result)) {
-            if($resultCheck > 0) {
-                echo "<div class="columnacoche1">"
-                    . "<div class="coche">"
-                        . "<img src=" . $row['fotoruta'] . " width="300px">"
-                        ."<div class="nombreCatalogo"><a>"
+        if($resultCheck > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $num = number_format($row['precio'], 0, '', '.'). " €";
+                echo "<div class='columnacoche1'>"
+                    . "<div class='coche'>"
+                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
+                        ."<div class='nombreCatalogo'><a>"
                             . $row['nombre'] ."</a></div>"
-                        . "<div class="precioCatalogo"><a>"
+                        . "<div class='precioCatalogo'><a>"
                             .  $num ."</a></div>"
                     . "</div>" 
-                    ."<div class="coche">" 
-                        . "<img src=" . $row['fotoruta'] . " width="300px">"
-                        ."<div class="nombreCatalogo"><a>"
+                    ."<div class='coche'>" 
+                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
+                        ."<div class='nombreCatalogo'><a>"
                             . $row['nombre'] ."</a></div>"
-                        . "<div class="precioCatalogo"><a>"
+                        . "<div class='precioCatalogo'><a>"
                             .  $num ."</a></div>"
                     . "</div>"
-                    ."<div class="coche">" 
-                        . "<img src=" . $row['fotoruta'] . " width="300px">"
-                        ."<div class="nombreCatalogo"><a>"
+                    ."<div class='coche'>" 
+                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
+                        ."<div class='nombreCatalogo'><a>"
                             . $row['nombre'] ."</a></div>"
-                        . "<div class="precioCatalogo"><a>"
-                            .  $num ."</a></div>"
-                    . "</div>"
+                        . "<div class='precioCatalogo'><a>"
+                        .  $num ."</a></div>"
+                . "</div>"
                 . "</div>";
             }
             }
