@@ -1,0 +1,1335 @@
+html{
+    background-color: #fffcf0;
+}
+
+a{
+    font-family: "Arial";
+}
+
+.contenedornav{
+    width: 100%;
+    padding: 10px;
+    background-color: darkgrey;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: "logo menu";
+}
+
+.logonav{
+    grid-area: logo;
+    align-items: end;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "imagen";
+}
+
+.imagennav{
+    grid-area: imagen;
+    align-self: end;
+}
+
+.menu{
+    grid-area: menu;
+    display: grid;
+    grid-template-columns:150px 150px 150px 150px ;
+    grid-template-areas: "menu1 menu2 menu3 menu4";
+    justify-content: center;
+    align-items: end;
+}
+
+.menu a{
+    text-decoration: none;
+    color: black;
+    font-size: 12px;
+    align-self: end;
+}
+
+.menu1{
+    grid-area: menu1;
+    height: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "text";
+    align-content: center;
+}
+
+.menu1 a{
+    grid-area: text;
+}
+
+.menu1 a :hover{
+    background-color: beige;
+}
+
+.menu2{
+    grid-area: menu2;
+    height: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "text";
+    align-content: center;
+}
+
+.menu2 a{
+    grid-area: text;
+}
+
+.menu2 :hover a{
+    background-color: beige;
+}
+
+.menu3{
+    grid-area: menu3;
+    height: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "text";
+    align-content: center;
+}
+
+.menu3 a{
+    grid-area: text;
+}
+
+.menu3 :hover a{
+    background-color: beige;
+}
+
+.menu4{
+    grid-area: menu4;
+    height: 30px;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "text";
+    align-content: center;
+}
+
+.menu4 a{
+    grid-area: text;
+}
+
+.menu4 :hover a{
+    background-color: beige;
+}
+
+.contenedorfooter{
+    width: 100%;
+    padding: 10px;
+    background-color: grey;
+    display: grid;
+    grid-template-areas:    "texto"
+                            "logo"
+                            "slogan";
+}
+
+.textofooter{
+    grid-area: texto;
+    display: grid;
+}
+
+.textofooter li{
+    list-style: none;
+    padding-top: 10px;
+}
+
+.textofooter li a{
+    font-size: 12px;
+    text-decoration: none;
+    color: black;
+}
+
+.copyright a{
+    text-align: center;
+}
+
+.logofooter{
+    grid-area: logo;
+}
+
+.sloganfooter{
+    grid-area: slogan;
+}
+
+.contenedorinfo{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 100px auto auto auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas:    "cabeza"
+                            "bloque1"
+                            "bloque2"
+                            "bloque3"
+                            "bloque4"
+                            "bloque5"
+                            "bloque6";
+    grid-row-gap: 10px;
+}
+
+.cabeza{
+    grid-area: cabeza;
+    justify-self: center;
+    align-self: end;
+}
+
+.cabeza a{
+    font-size: 30px;
+}
+
+.bloquesinfo a{
+    font-size: 15px;
+}
+
+.bloqueinfo1{
+    grid-area: bloque1;
+}
+.bloqueinfo2{
+    grid-area: bloque2;
+}
+.bloqueinfo3{
+    grid-area: bloque3;
+}
+.bloqueinfo4{
+    grid-area: bloque4;
+}
+.bloqueinfo5{
+    grid-area: bloque5;
+}
+.bloqueinfo6{
+    grid-area: bloque6;
+}
+
+.contenedorcatalogo{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 100px auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-areas:    "cabeza"
+                            "columnacoche1"
+                            "columnacoche2"
+                            "columnacoche3"
+                            "columnacoche4"
+                            "columnacoche5"
+                            "columnacoche6"
+                            "texto";
+    grid-row-gap: 70px;
+}
+
+
+
+.columnacoche1{
+    grid-area: columnacoche1;
+    display: grid;
+    grid-template-areas:"coche1 coche2 coche3";
+    grid-column-gap: 100px;
+    justify-content: center;
+}
+
+.coche{
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas:    "imagen"
+                            "nombre"
+                            "precio";
+    grid-row-gap: 5px;
+}
+
+.nombreCatalogo{
+    grid-area: nombre;
+    align-self: center;
+    justify-self: center;
+}
+
+.precioCatalogo{
+    grid-area: precio;
+    justify-self: center;
+}
+
+.columnacoche2{
+    grid-area: columnacoche2;
+    display: grid;
+    grid-template-areas:"coche4 coche5 coche6";
+    grid-column-gap: 100px;
+    justify-content: center;
+}
+
+.columnacoche3{
+    grid-area: columnacoche3;
+    display: grid;
+    grid-template-areas:"coche7 coche8 coche9";
+    grid-column-gap: 100px;
+    justify-content: center;
+}
+
+.columnacoche4{
+    grid-area: columnacoche4;
+    display: grid;
+    grid-template-areas:"coche10 coche11 coche12";
+    grid-column-gap: 100px;
+    justify-content: center;
+}
+
+.columnacoche5{
+    grid-area: columnacoche5;
+    display: grid;
+    grid-template-areas:"coche13 coche14 coche15";
+    grid-column-gap: 100px;
+    justify-content: center;
+}
+
+.columnacoche6{
+    grid-area: columnacoche6;
+    display: grid;
+    grid-template-areas:"coche16 coche17 coche18";
+    grid-column-gap: 100px;
+    justify-content: center;
+}
+
+.textocatalogo{
+
+    height: 80px;
+    justify-self: center;
+    align-self: center;
+}
+
+.contenedorgaleria{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 100px auto ;
+    grid-template-columns: auto;
+    grid-template-areas:    "cabeza"
+                            "columnagaleria1"
+                            "columnagaleria2"
+                            "columnagaleria3"
+                            "columnagaleria4"
+                            "columnagaleria5"
+                            "columnagaleria6"
+                            "columnagaleria7"
+                            "columnagaleria8"
+                            "columnagaleria9"
+                            "columnagaleria10"
+                            "columnagaleria11"
+                            "columnagaleria12"
+                            "columnagaleria13"
+                            "columnagaleria14"
+                            "columnagaleria15"
+                            "columnagaleria16"
+                            "columnagaleria17"
+                            "columnagaleria18";
+    grid-row-gap: 40px;
+}
+
+.columnagaleria1{
+    grid-area: columnagaleria1;
+    display: grid;
+    grid-template-areas:"galeria1 galeria2 galeria3";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria1{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria2{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria3{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria2{
+    grid-area: columnagaleria2;
+    display: grid;
+    grid-template-areas:"galeria4 galeria5 galeria6";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria4{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria5{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria6{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria3{
+    grid-area: columnagaleria3;
+    display: grid;
+    grid-template-areas:"galeria7 galeria8 galeria9";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria7{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria8{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria9{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria4{
+    grid-area: columnagaleria4;
+    display: grid;
+    grid-template-areas:"galeria10 galeria11 galeria12";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria10{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria11{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria12{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria5{
+    grid-area: columnagaleria5;
+    display: grid;
+    grid-template-areas:"galeria13 galeria14 galeria15";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria13{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria14{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria15{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria6{
+    grid-area: columnagaleria6;
+    display: grid;
+    grid-template-areas:"galeria16 galeria17 galeria18";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria16{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria17{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria18{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria7{
+    grid-area: columnagaleria7;
+    display: grid;
+    grid-template-areas:"galeria19 galeria20 galeria21";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria19{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria20{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria21{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria8{
+    grid-area: columnagaleria8;
+    display: grid;
+    grid-template-areas:"galeria22 galeria23 galeria24";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria22{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria23{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria24{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria9{
+    grid-area: columnagaleria9;
+    display: grid;
+    grid-template-areas:"galeria25 galeria26 galeria27";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria25{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria26{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria27{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria10{
+    grid-area: columnagaleria10;
+    display: grid;
+    grid-template-areas:"galeria28 galeria29 galeria30";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria28{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria29{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria30{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria11{
+    grid-area: columnagaleria11;
+    display: grid;
+    grid-template-areas:"galeria31 galeria32 galeria33";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria31{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria32{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.galeria33{
+    width: 300px;
+    height: 200px;
+    background-color: #fffcf0;
+}
+
+.columnagaleria12{
+    grid-area: columnagaleria12;
+    display: grid;
+    grid-template-areas:"galeria34 galeria35 galeria36";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria34{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria35{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria36{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.columnagaleria13{
+    grid-area: columnagaleria13;
+    display: grid;
+    grid-template-areas:"galeria37 galeria38 galeria39";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria37{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria38{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria39{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.columnagaleria14{
+    grid-area: columnagaleria14;
+    display: grid;
+    grid-template-areas:"galeria40 galeria41 galeria42";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria40{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria41{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria42{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.columnagaleria15{
+    grid-area: columnagaleria15;
+    display: grid;
+    grid-template-areas:"galeria43 galeria44 galeria45";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria43{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria44{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria45{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.columnagaleria16{
+    grid-area: columnagaleria16;
+    display: grid;
+    grid-template-areas:"galeria46 galeria47 galeria48";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria46{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria47{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria48{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.columnagaleria17{
+    grid-area: columnagaleria17;
+    display: grid;
+    grid-template-areas:"galeria49 galeria50 galeria51";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria49{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria50{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria51{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.columnagaleria18{
+    grid-area: columnagaleria18;
+    display: grid;
+    grid-template-areas:"galeria52 galeria53 galeria54";
+    grid-column-gap: 40px;
+    justify-content: center;
+}
+
+.galeria52{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria53{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+
+.galeria54{
+    width: 300px;
+    height: 200px;
+    background-color: black;
+}
+.contenedorindex{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 100px auto;
+    grid-template-areas:    "cabeza cabeza"
+                            "contenedor contenedor"
+                            "cantidad cochedia"
+                            "slider slider"
+                            ;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+
+
+.contenedorcantidadcoches{
+    height: 100%;
+    width: 100%;
+    background-color: lightgrey;
+    grid-area: cantidad;
+    display: grid;
+    grid-template-areas: "texto";
+}
+
+.cantidadcoches{
+    grid-area: texto;
+    align-self: center;
+    justify-self: center;
+}
+
+.cantidadcoches a{
+    font-size: 30px;
+    align-self: center;
+
+}
+
+.cochedeldia{
+    background-color: lightgrey;
+    height: 350px;
+    grid-area: cochedia;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas:    "texto"
+                            "imagen";
+    grid-row-gap: 10px;
+}
+
+.cochedeldiatexto{
+    grid-area: texto;
+    align-self: end;
+    justify-self: center;
+}
+
+.cocheindex{
+    justify-self: center;
+}
+
+
+
+.contenedorcoche{
+    width: 80%;
+    background-color: lightgrey;
+    margin: auto;
+}
+
+.huecocoche{
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:    "foto info"
+                            "finance finance";
+
+}
+
+.financiacion{
+    grid-area: finance;
+    justify-self: center;
+    width: 500px;
+    height: 300px;
+    background-color: darkgray;
+    display: grid;
+    grid-template-rows: 90px auto auto auto auto 90px;
+    grid-auto-columns: auto;
+    grid-template-areas:    "title"
+                            "precio"
+                            "pago"
+                            "meses"
+                            "calcular"
+                            "total";
+    grid-row-gap: 10px;
+}
+
+.titulofinance{
+    grid-area: title;
+    align-self: center;
+    justify-self: center;
+}
+
+.titulofinance a{
+    font-size: 20px;
+}
+
+.precioinicial{
+    grid-area: precio;
+    justify-self: center;
+}
+
+.pagoinicial{
+    grid-area: pago;
+    justify-self: center;
+}
+
+.meses{
+    grid-area: meses;
+    justify-self: center;
+}
+
+.botonfinance{
+    grid-area: calcular;
+    justify-self: center;
+}
+
+.totalfinance{
+    grid-area: total;
+    justify-self: center;
+    align-self: center;
+}
+
+.fotosanunciocoche{
+    grid-area: foto;
+    display: grid;
+}
+
+.bloquefotos{
+    align-self: center;
+    justify-self: center;
+    width: 600px;
+    height: 534px;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-areas:    "grande"
+                            "pequeña";
+}
+
+.fotogrande{
+    grid-area: grande;
+}
+
+.fotospequeñas{
+    grid-area: pequeña;
+    display: grid;
+    grid-auto-columns: auto auto auto;
+    grid-template-areas: "foto1 foto2 foto3";
+}
+
+.fotospequeñas img{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.fotospequeñas img:hover{
+    opacity: 1;
+}
+
+
+.infoanunciocoche{
+    height: 700px;
+    grid-area: info;
+    display: grid;
+}
+
+.bloquedatos{
+    align-self: center;
+    justify-self: center;
+    width: 600px;
+    height: 534px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    grid-template-areas:    "nombre nombre nombre"
+                            "info info info"
+                            "km cv precio"
+                            "color trac trans";
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.nombrecoche{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: nombre;
+    text-align: center;
+    justify-self: center;
+}
+
+.nombrecoche a{
+    font-size: 25px;
+}
+
+.datoscoche{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: info;
+    text-align: center;
+    justify-self: center;
+}
+
+.kilometraje{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: km;
+    text-align: center;
+}
+
+.potencia{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: cv;
+    text-align: center;
+}
+
+.precio{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: precio;
+    text-align: center;
+}
+
+.color{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: color;
+    text-align: center;
+}
+
+.traccion{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: trac;
+    text-align: center;
+}
+
+.transmision{
+    height: 100%;
+    width: 100%;
+    background-color: darkgray;
+    grid-area: trans;
+    text-align: center;
+}
+
+.separacion{
+    height: 100px;
+}
+
+.contenedorcontacto{
+    width: 80%;
+    height: 1000px;
+    margin: auto;
+    display: grid;
+}
+
+.cabezacontacto{
+    align-self: center;
+    justify-self: center;
+}
+
+.cabezacontacto a{
+    font-size: 30px;
+}
+
+.bloquecontacto{
+    width: 400px;
+    height: 700px;
+    background-color: lightgrey;
+    align-self: center;
+    justify-self: center;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto auto auto auto;
+    grid-template-areas:    "nombretexto"
+                            "nombre"
+                            "nombreemail"
+                            "email"
+                            "nombrecocheusuario"
+                            "cocheusuario"
+                            "nombrecomentario"
+                            "comentario"
+                            "enviar";
+    grid-row-gap: 2px;
+}
+
+.nombretexto{
+    grid-area: nombretexto;
+    align-self: end;
+    justify-self: center;
+}
+
+.nombre{
+    grid-area: nombre;
+    justify-self: center;
+}
+
+.nombreemail{
+    grid-area: nombreemail;
+    align-self: end;
+    justify-self: center;
+}
+
+.email{
+    grid-area: email;
+    justify-self: center;
+}
+
+.nombrecocheusuario{
+    grid-area: nombrecocheusuario;
+    align-self: end;
+    justify-self: center;
+}
+
+.cocheusuario{
+    grid-area: cocheusuario;
+    justify-self: center;
+}
+
+.nombrecomentario{
+    grid-area: nombrecomentario;
+    align-self: end;
+    justify-self: center;
+}
+
+.comentario{
+    grid-area: comentario;
+    justify-self: center;
+}
+
+.enviar{
+    grid-area: enviar;
+    justify-self: center;
+}
+
+.fotoerror404{
+    width: 30%;
+    text-align: center;
+}
+
+.contenedorMenuAdmin{
+    padding: 0px 0px 80px 0px;
+    width: 80%;
+    margin: auto;
+    display: grid;
+    display: grid;
+    grid-template-rows: 100px auto;
+    grid-template-columns: auto;
+    grid-template-areas:    "cabeza"
+                            "menu";
+    grid-row-gap: 70px;
+}
+
+
+.areaMenuAdmin{
+    grid-area: menu;
+    align-self: center;
+    justify-self: center;
+    width: 400px;
+    height: 600px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:    "añadir"
+                            "editar"
+                            "eliminar";
+    grid-row-gap: 20px;
+
+}
+
+.areaMenuAdmin a{
+    font-size: 20px;
+}
+
+.añadirCoche{
+    grid-area: añadir;
+    width: 400px;
+    height: 200px;
+    background-color: lightgrey;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.añadirCoche:hover{
+    background-color: darkgray;
+}
+
+.editarCoche{
+    grid-area: editar;
+    width: 400px;
+    height: 200px;
+    background-color: lightgrey;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.editarCoche:hover{
+    background-color: darkgray;
+}
+
+.eliminarCoche{
+    grid-area: eliminar;
+    width: 400px;
+    height: 200px;
+    background-color: lightgrey;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+}
+
+.eliminarCoche:hover{
+    background-color: darkgray;
+}
+
+.contenedorLogin{
+    padding: 0px 0px 50px 0px;
+    width: 40%;
+    display: grid;
+    justify-content: center;
+    margin: auto;
+    grid-template-rows: 100px auto;
+    grid-template-areas:    "cabeza"
+                            "login";
+    grid-row-gap: 70px;
+}
+
+.areaLogin{
+    padding: 100px;
+    grid-area: login;
+    display: grid;
+    justify-content: center;
+    grid-row-gap: 20px;
+    background-color: lightgrey;
+
+}
+
+.contenedorEliminar {
+    padding: 0px 0px 20px 0px;
+    width: 80%;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 100px auto;
+    grid-template-areas:    "cabeza"
+                            "eliminar";
+    grid-row-gap: 70px;
+}
+
+.areaEliminar{
+    width: 1000px;
+    background-color: lightgrey;
+    display: grid;
+    justify-content: center;
+    grid-template-areas:    "texto"
+                            "seleccion";
+}
+
+.textoEliminar{
+    margin: 20px 0px;
+    grid-area: texto;
+    width:960px ;
+    background-color: white;
+    display: grid;
+    justify-content: center;
+    grid-auto-rows: auto;
+    grid-row-gap: 10px;
+
+}
+
+.contenedorEditar {
+    padding: 0px 0px 20px 0px;
+    width: 80%;
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: 100px auto;
+    grid-template-areas:    "cabeza"
+                            "eliminar";
+    grid-row-gap: 70px;
+}
+
+.areaEditar{
+    width: 1000px;
+    background-color: lightgrey;
+    display: grid;
+    justify-content: center;
+    grid-template-rows: auto;
+    grid-template-areas:    "texto"
+                            "seleccion"
+                            "cambios";
+    grid-row-gap: 10px;
+}
+
+.textoEditar{
+    margin: 20px 0px;
+    grid-area: texto;
+    width:960px ;
+    background-color: white;
+    display: grid;
+    justify-content: center;
+    grid-auto-rows: auto;
+    grid-row-gap: 10px;
+}
+
+.seleccionarEditar{
+    grid-area: seleccion;
+    display: grid;
+    justify-content: center;
+    align-content: end;
+}
+
+.cambiosEditar{
+    grid-area: cambios;
+    display: grid;
+    justify-content: center;
+    grid-row-gap: 10px;
+}
+
+.cambiar{
+    display: grid;
+    justify-self: center;
+}
+
