@@ -71,7 +71,7 @@ include "includes/nav.php"
                 . "</div>"
                 . "</div>";
             }
-            }
+        }
             ?>
 
     </div>
