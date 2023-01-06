@@ -65,6 +65,7 @@ include "includes/nav.php"
 
 
     <div class="huecocoche">
+        
             <?php
             require_once("php/dbcoches.php");
             $result = $conn->query("SELECT * FROM coches");
@@ -119,7 +120,7 @@ include "includes/nav.php"
                             . "</div>";
                 }
             }
-                ?>
+            ?>
         <div class="financiacion">
             <div class="titulofinance">
                 <a>CALCULADORA DE FINANCIACIÓN</a>

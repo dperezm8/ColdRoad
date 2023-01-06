@@ -19,6 +19,7 @@ include "includes/nav.php"
         <div class="cabeza">
             <a><strong>GALERÍA</strong></a>
         </div>
+        
         <?php
         require_once("php/dbcoches.php");
         $result = $conn->query("SELECT * FROM coches");
@@ -46,7 +47,7 @@ include "includes/nav.php"
                 . "</div>";
             }
         }
-            ?>
+        ?>
 
         <div class="textogaleria">
             <a></a>
