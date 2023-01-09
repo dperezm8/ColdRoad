@@ -67,52 +67,50 @@ include "includes/nav.php"
             $result = $conn->query("SELECT * FROM coches");
 
             $resultCheck = mysqli_num_rows($result);
-                    if ($resultCheck>0) {
-                        $row = mysqli_fetch_assoc($result);
-                    }
 
             if($resultCheck > 0) {
-                    $num = number_format($row['precio'], 0, '', '.'). " €";
-                    echo "<div class='fotosanunciocoche'>"
-                        . "<div class='bloquefotos'>"
-                            . "<div class='fotogrande'>"
-                                . "<img id='grande' src=" . $row['fotoruta'] . " width='600px'>"
-                            . "</div>" 
-                            ."<div class='fotospequeñas'>" 
-                                . "<img src=" . $row['fotoruta1'] . " width='200px' onclick='selector(this)'>"
-                                . "<img src=" . $row['fotoruta2'] . " width='200px' onclick='selector(this)'>"
-                                . "<img src=" . $row['fotoruta3'] . " width='200px' onclick='selector(this)'>"
-                            . "</div>"
+                $row = mysqli_fetch_assoc($result);
+                $num = number_format($row['precio'], 0, '', '.'). " €";
+                echo "<div class='fotosanunciocoche'>"
+                    . "<div class='bloquefotos'>"
+                        . "<div class='fotogrande'>"
+                            . "<img id='grande' src=" . $row['fotoruta'] . " width='600px'>"
+                        . "</div>" 
+                        ."<div class='fotospequeñas'>" 
+                            . "<img src=" . $row['fotoruta1'] . " width='200px' onclick='selector(this)'>"
+                            . "<img src=" . $row['fotoruta2'] . " width='200px' onclick='selector(this)'>"
+                            . "<img src=" . $row['fotoruta3'] . " width='200px' onclick='selector(this)'>"
                         . "</div>"
-                    . "</div>";
+                    . "</div>"
+                . "</div>";
 
-                    echo "<div class='infoanunciocoche'>"
-                        . "<div class='bloquedatos'>"
-                            . "<div class='nombrecoche'>"
-                                . $row['marca'] . $row['modelo']
-                            . "</div>"
-                            . "<div class='datoscoche'>"
-                                . $row['datoscoche']
-                            . "</div>"
-                            . "<div class='kilometraje'>"
-                                . $row['kilometraje'] . " km"
-                            . "</div>"
-                            . "<div class='potencia'>"
-                                . $row['potencia'] . " cv"
-                            . "</div>"
-                            . "<div class='precio'>"
-                                . $row['num']
-                            . "</div>"
-                            . "<div class='color'>"
-                                . $row['color']
-                            . "</div>"
-                            . "<div class='traccion'>"
-                                . $row['traccion']
-                            . "</div>"
-                            . "<div class='transmision'>"
-                                . $row['transmision']
-                            . "</div>"
-                            . "</div>";
+                echo "<div class='infoanunciocoche'>"
+                    . "<div class='bloquedatos'>"
+                        . "<div class='nombrecoche'>"
+                            . $row['marca'] . $row['modelo']
+                        . "</div>"
+                        . "<div class='datoscoche'>"
+                            . $row['datoscoche']
+                        . "</div>"
+                        . "<div class='kilometraje'>"
+                            . $row['kilometraje'] . " km"
+                        . "</div>"
+                        . "<div class='potencia'>"
+                            . $row['potencia'] . " cv"
+                        . "</div>"
+                        . "<div class='precio'>"
+                            . $row['num']
+                        . "</div>"
+                        . "<div class='color'>"
+                            . $row['color']
+                        . "</div>"
+                        . "<div class='traccion'>"
+                            . $row['traccion']
+                        . "</div>"
+                        . "<div class='transmision'>"
+                            . $row['transmision']
+                        . "</div>"
+                        . "</div>";
             }
             ?>
         <div class="financiacion">

@@ -25,11 +25,9 @@ include "includes/nav.php"
         $result = $conn->query("SELECT * FROM coches");
 
         $resultCheck = mysqli_num_rows($result);
-                if ($resultCheck>0) {
-                    $row = mysqli_fetch_assoc($result);
-                }
 
         if($resultCheck > 0) {
+            $row = mysqli_fetch_assoc($result);
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='columnagaleria1'>"
                     . "<div class='galeria1'>"
