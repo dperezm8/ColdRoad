@@ -32,7 +32,7 @@ include "includes/nav.php"
                     }
     
             if($resultCheck > 0) {
-                    echo $row['count(*)'];
+                    echo $row['COUNT(*)'];
             }
             ?>
                 </STRONG>
