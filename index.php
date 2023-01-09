@@ -33,7 +33,7 @@ include "includes/nav.php"
     
             if($resultCheck > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo $row['count(*)'];
+                    echo $row['COUNT(*)'];
                 }
             }
             ?>
