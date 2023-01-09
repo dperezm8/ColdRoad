@@ -51,10 +51,7 @@ include "includes/nav.php"
             $resultCheck = mysqli_num_rows($result);
                     if ($resultCheck>0) {
                         $row = mysqli_fetch_assoc($result);
-                    }
-    
-            if($resultCheck > 0) {
-                    echo "<img src=" . $row['fotoruta'] . " width='400px'>";
+                        echo "<img src=" . $row['fotoruta'] . " width='400px'>";
             }
             ?>
         </div>

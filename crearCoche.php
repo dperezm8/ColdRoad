@@ -71,7 +71,6 @@ if(move_uploaded_file($foto3['tmp_name'], $ruta . "/" . $foto3['name'])){
     $fotoruta3 = $ruta . "/" . $foto['name'] . "noEncontrado";
 }
 
-
 $sql = "INSERT INTO coches (marca, modelo, color, kilometraje, potencia, cilindrada, anio, transmision, traccion, precio, datoscoche, nombre, fotoruta, fotoruta1, fotoruta2, fotoruta3) 
 VALUES ('$marca','$modelo','$color','$kilometraje','$potencia','$cilindrada','$anio','$transmision','$traccion','$precio','$datoscoche','$nombre','$fotoruta','$fotoruta1','$fotoruta2','$fotoruta3');";
 
