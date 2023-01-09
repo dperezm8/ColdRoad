@@ -32,9 +32,7 @@ include "includes/nav.php"
                     }
     
             if($resultCheck > 0) {
-                while ($row = $result->fetch_assoc()) {
                     echo $row['count(*)'];
-                }
             }
             ?>
                 </STRONG>
@@ -56,9 +54,7 @@ include "includes/nav.php"
                     }
     
             if($resultCheck > 0) {
-                while ($row = $result->fetch_assoc()) {
                     echo "<img src=" . $row['fotoruta'] . " width='400px'>";
-                }
             }
             ?>
         </div>

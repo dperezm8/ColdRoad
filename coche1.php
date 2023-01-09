@@ -61,11 +61,7 @@ include "includes/nav.php"
 ?>
 
 <div class="contenedorcoche">
-
-
-
     <div class="huecocoche">
-        
             <?php
             require_once("php/dbcoches.php");
             $result = $conn->query("SELECT * FROM coches");
@@ -76,7 +72,6 @@ include "includes/nav.php"
                     }
 
             if($resultCheck > 0) {
-                while ($row = $result->fetch_assoc()) {
                     $num = number_format($row['precio'], 0, '', '.'). " €";
                     echo "<div class='fotosanunciocoche'>"
                         . "<div class='bloquefotos'>"
@@ -118,7 +113,6 @@ include "includes/nav.php"
                                 . $row['transmision']
                             . "</div>"
                             . "</div>";
-                }
             }
             ?>
         <div class="financiacion">
@@ -143,7 +137,6 @@ include "includes/nav.php"
         </div>
         <div class="separacion"></div>
     </div>
-
 </div>
 <?php
 include "includes/footer.php"
