@@ -1,19 +1,3 @@
-<?php
-include_once 'php/dbcoches.php';
-
-$sql = "SELECT * from coches;";
-
-$result = $conn->query($sql);
-
-$resultCheck = mysqli_num_rows($result);
-if ($resultCheck>0) {
-    $row = mysqli_fetch_assoc($result);
-    $num = number_format($row['precio'], 0, '', '.'). " €";
-}
-
-
-?>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -30,49 +14,35 @@ if ($resultCheck>0) {
 include "includes/nav.php"
 ?>
 
-
     <div class="contenedorcatalogo">
         <div class="cabeza">
             <a><strong>CATÁLOGO</strong></a>
         </div>
+
+        <div class='columnacoche1'>
+        
         <?php
         require_once("php/dbcoches.php");
-        $result = $conn->query("SELECT * FROM coches");
 
+        $result = $conn->query("SELECT * FROM coches");
         $resultCheck = mysqli_num_rows($result);
-                if ($resultCheck>0) {
-                    $row = mysqli_fetch_assoc($result);
-                }
 
         if($resultCheck > 0) {
+            $row = mysqli_fetch_assoc($result);
             while ($row = $result->fetch_assoc()) {
                 $num = number_format($row['precio'], 0, '', '.'). " €";
-                echo "<div class='columnacoche1'>"
-                    . "<div class='coche'>"
+                echo "<div class='coche'>"
                         . "<img src=" . $row['fotoruta'] . " width='300px'>"
                         ."<div class='nombreCatalogo'><a>"
                             . $row['nombre'] ."</a></div>"
                         . "<div class='precioCatalogo'><a>"
                             .  $num ."</a></div>"
-                    . "</div>" 
-                    ."<div class='coche'>" 
-                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
-                        ."<div class='nombreCatalogo'><a>"
-                            . $row['nombre'] ."</a></div>"
-                        . "<div class='precioCatalogo'><a>"
-                            .  $num ."</a></div>"
-                    . "</div>"
-                    ."<div class='coche'>" 
-                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
-                        ."<div class='nombreCatalogo'><a>"
-                            . $row['nombre'] ."</a></div>"
-                        . "<div class='precioCatalogo'><a>"
-                        .  $num ."</a></div>"
-                . "</div>"
-                . "</div>";
+                    . "</div>";
             }
         }
         ?>
+
+        </div>
 
     </div>
 

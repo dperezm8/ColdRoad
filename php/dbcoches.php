@@ -1,5 +1,5 @@
 <?php
-$dbServername = "localhost";
+$dbServername = "127.0.0.1:3306";
 $dbUsername = "root";
 $dbPassword = "";
 $dbName = "cold_road";

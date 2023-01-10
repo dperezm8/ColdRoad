@@ -24,15 +24,13 @@ include "includes/nav.php"
                 <STRONG>
                 <?php
             require_once("php/dbcoches.php");
-            $result = $conn->query("SELECT * FROM coches ORDER BY RAND();");
+            $result = $conn->query("SELECT COUNT(id) FROM coches;");
     
             $resultCheck = mysqli_num_rows($result);
-                    if ($resultCheck>0) {
-                        $row = mysqli_fetch_assoc($result);
-                    }
     
             if($resultCheck > 0) {
-                    echo $row['COUNT(*)'];
+                $row = mysqli_fetch_assoc($result);
+                echo $row['COUNT(id)'];
             }
             ?>
                 </STRONG>

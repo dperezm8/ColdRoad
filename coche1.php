@@ -1,16 +1,17 @@
 <?php
-include_once 'php/dbcoches.php';
+require_once("php/dbcoches.php");
 
+$result = $conn->query("SELECT * FROM coches;");
+    
+            $resultCheck = mysqli_num_rows($result);
+    
+            if($resultCheck > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $id = $row['id'];
+            }
 
-$sql = "SELECT * from coches where id='$id';";
-
-$result = $conn->query($sql);
-
-$resultCheck = mysqli_num_rows($result);
-if ($resultCheck>0) {
-    $row = mysqli_fetch_assoc($result);
-}
 ?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -19,10 +20,15 @@ if ($resultCheck>0) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/styles.css">
     <title>
-        <?php
-        if ($resultCheck>0) {
-            echo ($row['nombre']);
-        }
+    <?php
+    require_once("php/dbcoches.php");
+    $result = $conn->query("SELECT * FROM coches");
+    $resultCheck = mysqli_num_rows($result);
+    
+    if($resultCheck > 0) {
+        $row = mysqli_fetch_assoc($result);
+        echo $row['nombre'];
+    }
         ?>
     </title>
     <link rel="icon" type="image/x-icon" href="img/logos/favicon.png">
@@ -61,56 +67,58 @@ include "includes/nav.php"
 ?>
 
 <div class="contenedorcoche">
+
+
+
     <div class="huecocoche">
+        
             <?php
             require_once("php/dbcoches.php");
-            $result = $conn->query("SELECT * FROM coches");
-
-            $resultCheck = mysqli_num_rows($result);
+            
 
             if($resultCheck > 0) {
                 $row = mysqli_fetch_assoc($result);
-                $num = number_format($row['precio'], 0, '', '.'). " €";
-                echo "<div class='fotosanunciocoche'>"
-                    . "<div class='bloquefotos'>"
-                        . "<div class='fotogrande'>"
-                            . "<img id='grande' src=" . $row['fotoruta'] . " width='600px'>"
-                        . "</div>" 
-                        ."<div class='fotospequeñas'>" 
-                            . "<img src=" . $row['fotoruta1'] . " width='200px' onclick='selector(this)'>"
-                            . "<img src=" . $row['fotoruta2'] . " width='200px' onclick='selector(this)'>"
-                            . "<img src=" . $row['fotoruta3'] . " width='200px' onclick='selector(this)'>"
+                    $num = number_format($row['precio'], 0, '', '.'). " €";
+                    echo "<div class='fotosanunciocoche'>"
+                        . "<div class='bloquefotos'>"
+                            . "<div class='fotogrande'>"
+                                . "<img id='grande' src=" . $row['fotoruta'] . " width='600px'>"
+                            . "</div>" 
+                            ."<div class='fotospequeñas'>" 
+                                . "<img src=" . $row['fotoruta1'] . " width='200px' onclick='selector(this)'>"
+                                . "<img src=" . $row['fotoruta2'] . " width='200px' onclick='selector(this)'>"
+                                . "<img src=" . $row['fotoruta3'] . " width='200px' onclick='selector(this)'>"
+                            . "</div>"
                         . "</div>"
-                    . "</div>"
-                . "</div>";
+                    . "</div>";
 
-                echo "<div class='infoanunciocoche'>"
-                    . "<div class='bloquedatos'>"
-                        . "<div class='nombrecoche'>"
-                            . $row['marca'] . $row['modelo']
-                        . "</div>"
-                        . "<div class='datoscoche'>"
-                            . $row['datoscoche']
-                        . "</div>"
-                        . "<div class='kilometraje'>"
-                            . $row['kilometraje'] . " km"
-                        . "</div>"
-                        . "<div class='potencia'>"
-                            . $row['potencia'] . " cv"
-                        . "</div>"
-                        . "<div class='precio'>"
-                            . $row['num']
-                        . "</div>"
-                        . "<div class='color'>"
-                            . $row['color']
-                        . "</div>"
-                        . "<div class='traccion'>"
-                            . $row['traccion']
-                        . "</div>"
-                        . "<div class='transmision'>"
-                            . $row['transmision']
-                        . "</div>"
-                        . "</div>";
+                    echo "<div class='infoanunciocoche'>"
+                        . "<div class='bloquedatos'>"
+                            . "<div class='nombrecoche'>"
+                                . $row['nombre']
+                            . "</div>"
+                            . "<div class='datoscoche'>"
+                                . $row['datoscoche']
+                            . "</div>"
+                            . "<div class='kilometraje'>"
+                                . $row['kilometraje'] . " km"
+                            . "</div>"
+                            . "<div class='potencia'>"
+                                . $row['potencia'] . " cv"
+                            . "</div>"
+                            . "<div class='precio'>"
+                                . $num
+                            . "</div>"
+                            . "<div class='color'>"
+                                . $row['color']
+                            . "</div>"
+                            . "<div class='traccion'>"
+                                . $row['traccion']
+                            . "</div>"
+                            . "<div class='transmision'>"
+                                . $row['transmision']
+                            . "</div>"
+                            . "</div>";
             }
             ?>
         <div class="financiacion">
@@ -135,6 +143,7 @@ include "includes/nav.php"
         </div>
         <div class="separacion"></div>
     </div>
+
 </div>
 <?php
 include "includes/footer.php"

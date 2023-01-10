@@ -19,6 +19,8 @@ include "includes/nav.php"
         <div class="cabeza">
             <a><strong>GALERÍA</strong></a>
         </div>
+
+        <div class='columnagaleria1'>
         
         <?php
         require_once("php/dbcoches.php");
@@ -29,24 +31,23 @@ include "includes/nav.php"
         if($resultCheck > 0) {
             $row = mysqli_fetch_assoc($result);
             while ($row = $result->fetch_assoc()) {
-                echo "<div class='columnagaleria1'>"
-                    . "<div class='galeria1'>"
+                echo "<div class='galeria1'>"
                         . "<a href='coche1.php'>"
-                        . "<img src=" . $row['fotoruta'] . " width='300px'>" 
-                    . "</div>"
-                    . "<div class='galeria2'>"
+                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
+                        . "</div>";
+                echo "<div class='galeria2'>"
                         . "<a href='coche1.php'>"
                         . "<img src=" . $row['fotoruta1'] . " width='300px'>"  
-                    . "</div>" 
-                    ."<div class='galeria3'>"
+                    . "</div>"; 
+                echo "<div class='galeria3'>"
                     . "<a href='coche1.php'>"
                     . "<img src=" . $row['fotoruta2'] . " width='300px'>" 
-                    . "</div>"
-                . "</div>";
+                    . "</div>";
             }
         }
         ?>
 
+    </div>
         <div class="textogaleria">
             <a></a>
         </div>

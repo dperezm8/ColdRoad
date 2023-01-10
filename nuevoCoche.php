@@ -1,9 +1,3 @@
-<?php
-require "includes/protec.php";
-require "includes/seguridadAdmin.php"
-?>
-
-
 <html>
 <head>
     <meta charset="UTF-8">
