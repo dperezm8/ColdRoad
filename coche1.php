@@ -1,17 +1,3 @@
-<?php
-require_once("php/dbcoches.php");
-
-$result = $conn->query("SELECT * FROM coches;");
-    
-            $resultCheck = mysqli_num_rows($result);
-    
-            if($resultCheck > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $id = $row['id'];
-            }
-
-?>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -60,7 +46,7 @@ $result = $conn->query("SELECT * FROM coches;");
     </script>
     <script src="scripts/selector.js"></script>
 </head>
-<body onload="numRand()">
+<body>
 
 <?php
 include "includes/nav.php"
@@ -74,11 +60,12 @@ include "includes/nav.php"
         
             <?php
             require_once("php/dbcoches.php");
+            $result = $conn->query("SELECT * FROM coches");
+            $resultCheck = mysqli_num_rows($result);
             
-
             if($resultCheck > 0) {
                 $row = mysqli_fetch_assoc($result);
-                    $num = number_format($row['precio'], 0, '', '.'). " €";
+                $num = number_format($row['precio'], 0, '', '.'). " €";
                     echo "<div class='fotosanunciocoche'>"
                         . "<div class='bloquefotos'>"
                             . "<div class='fotogrande'>"
@@ -121,6 +108,9 @@ include "includes/nav.php"
                             . "</div>";
             }
             ?>
+            
+            
+            
         <div class="financiacion">
             <div class="titulofinance">
                 <a>CALCULADORA DE FINANCIACIÓN</a>
