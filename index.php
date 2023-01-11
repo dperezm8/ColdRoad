@@ -24,10 +24,11 @@ include "includes/nav.php"
                 <STRONG>
                 <?php
             require_once("php/dbcoches.php");
-            $result = $conn->query("SELECT COUNT(id) FROM coches;");
-    
+            $stmt = $conn->prepare("SELECT COUNT(id) FROM coches");
+            $stmt->execute();
+            $result = $stmt->get_result();
             $resultCheck = mysqli_num_rows($result);
-    
+        
             if($resultCheck > 0) {
                 $row = mysqli_fetch_assoc($result);
                 echo $row['COUNT(id)'];
@@ -44,6 +45,7 @@ include "includes/nav.php"
         <div class="cocheindex">
             <?php
             require_once("php/dbcoches.php");
+    
             $result = $conn->query("SELECT * FROM coches ORDER BY RAND();");
     
             $resultCheck = mysqli_num_rows($result);
@@ -51,6 +53,8 @@ include "includes/nav.php"
                         $row = mysqli_fetch_assoc($result);
                         echo "<img src=" . $row['fotoruta'] . " width='400px'>";
             }
+            $stmt->close();
+            $conn->close();
             ?>
         </div>
     </div>

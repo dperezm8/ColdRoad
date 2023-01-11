@@ -14,7 +14,7 @@
 include "includes/nav.php"
 ?>
 
-    <div class="contenedorcatalogo">
+<div class="contenedorcatalogo">
         <div class="cabeza">
             <a><strong>CATÁLOGO</strong></a>
         </div>
@@ -24,7 +24,10 @@ include "includes/nav.php"
         <?php
         require_once("php/dbcoches.php");
 
-        $result = $conn->query("SELECT * FROM coches");
+        // prepare and bind
+        $stmt = $conn->prepare("SELECT * FROM coches");
+        $stmt->execute();
+        $result = $stmt->get_result();
         $resultCheck = mysqli_num_rows($result);
 
         if($resultCheck > 0) {
@@ -40,6 +43,8 @@ include "includes/nav.php"
                     . "</div>";
             }
         }
+        $stmt->close();
+        $conn->close();
         ?>
 
         </div>

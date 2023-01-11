@@ -8,7 +8,11 @@
     <title>
     <?php
     require_once("php/dbcoches.php");
-    $result = $conn->query("SELECT * FROM coches");
+
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("SELECT * FROM coches");
+    $stmt->execute();
+    $result = $stmt->get_result();
     $resultCheck = mysqli_num_rows($result);
     
     if($resultCheck > 0) {
@@ -59,9 +63,6 @@ include "includes/nav.php"
     <div class="huecocoche">
         
             <?php
-            require_once("php/dbcoches.php");
-            $result = $conn->query("SELECT * FROM coches");
-            $resultCheck = mysqli_num_rows($result);
             
             if($resultCheck > 0) {
                 $row = mysqli_fetch_assoc($result);
@@ -107,9 +108,9 @@ include "includes/nav.php"
                             . "</div>"
                             . "</div>";
             }
+            $stmt->close();
+            $conn->close();
             ?>
-            
-            
             
         <div class="financiacion">
             <div class="titulofinance">
