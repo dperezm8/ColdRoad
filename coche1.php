@@ -5,11 +5,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style/styles.css">
-    <title>
     <?php
     require_once("php/dbcoches.php");
 
-    $id = $_GET['id'];
     $stmt = $conn->prepare("SELECT * FROM coches");
     $stmt->execute();
     $result = $stmt->get_result();
@@ -17,10 +15,9 @@
     
     if($resultCheck > 0) {
         $row = mysqli_fetch_assoc($result);
-        echo $row['nombre'];
+        echo "<title>" . $row['nombre'] . "</title>";
     }
         ?>
-    </title>
     <link rel="icon" type="image/x-icon" href="img/logos/favicon.png">
     <script>
 
