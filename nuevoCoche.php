@@ -47,37 +47,48 @@ include "includes/nav.php"
             <a>Kilometraje</a>
         </div>
         <div class="anadirkm">
-            <input type="text" name="kilometraje" id="kilometraje">
+            <input type="number" min="0" name="kilometraje" id="kilometraje">
         </div>
         <div class="nombrepotencia">
             <a>Potencia</a>
         </div>
         <div class="anadirpotencia">
-            <input type="text" name="potencia" id="potencia">
+            <input type="number" min="0" name="potencia" id="potencia">
         </div>
         <div class="nombrecc">
             <a>Cilindrada</a>
         </div>
         <div class="anadircc">
-            <input type="text" name="cilindrada" id="cilindrada">
+            <input type="number" min="0" name="cilindrada" id="cilindrada">
         </div>
         <div class="nombreanio">
             <a>Año</a>
         </div>
         <div class="anadirano">
-            <input type="text" name="anio" id="anio">
+            <input type="number" min="1900" name="anio" id="anio">
         </div>
         <div class="nombretrans">
             <a>Transmisión</a>
         </div>
         <div class="anadirtrans">
-            <input type="text" name="transmision" id="transmision">
+                <select name="transmision">
+                    <option hidden></option>
+                    <option value="Automatico" >Automatico</option>
+                    <option value="Manual" >Manual</option>
+                </select>
         </div>
         <div class="nombretracc">
             <a>Tracción</a>
         </div>
         <div class="anadirtrancc">
-            <input type="text" name="traccion" id="traccion">
+                <select name="traccion">
+                    <option selected hidden value=""></option>
+                    <option value="4x4">4x4</option>
+                    <option value="AWD">AWD</option>
+                    <option value="4WD">4WD</option>
+                    <option value="FWD">FWD</option>
+                    <option value="RWD">RWD</option>
+                </select>
         </div>
         <div class="nombreprecio">
             <a>Precio</a>
