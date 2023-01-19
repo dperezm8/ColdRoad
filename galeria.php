@@ -35,17 +35,17 @@ include "includes/nav.php"
             $row = mysqli_fetch_assoc($result);
             while ($row = $result->fetch_assoc()) {
                 echo "<div class='galeria1'>"
-                        . "<a href='coche1.php'>"
-                        . "<img src=" . $row['fotoruta'] . " width='300px'>"
-                        . "</div>";
-                echo "<div class='galeria2'>"
-                        . "<a href='coche1.php'>"
-                        . "<img src=" . $row['fotoruta1'] . " width='300px'>"  
-                    . "</div>"; 
-                echo "<div class='galeria3'>"
-                    . "<a href='coche1.php'>"
-                    . "<img src=" . $row['fotoruta2'] . " width='300px'>" 
+                    . "<a href='coche1.php?id=" . $row['id'] . "'>"
+                    . "<img src=" . $row['fotoruta'] . " width='300px'>"
                     . "</div>";
+                echo "<div class='galeria2'>"
+                . "<a href='coche1.php?id=" . $row['id'] . "'>"
+                . "<img src=" . $row['fotoruta1'] . " width='300px'>"  
+                . "</div>"; 
+                echo "<div class='galeria3'>"
+                    . "<a href='coche1.php?id=" . $row['id'] . "'>"
+                    . "<img src=" . $row['fotoruta2'] . " width='300px'>" 
+                . "</div>";
             }
         }
         $stmt->close();

@@ -8,15 +8,19 @@
     <?php
     require_once("php/dbcoches.php");
 
-    $stmt = $conn->prepare("SELECT * FROM coches");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $resultCheck = mysqli_num_rows($result);
-    
+    if(isset($_GET['id']) && !empty($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
+        $id = $_GET['id'];
+        $stmt = $conn->prepare("SELECT * FROM coches WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $resultCheck = mysqli_num_rows($result);
+
     if($resultCheck > 0) {
         $row = mysqli_fetch_assoc($result);
         echo "<title>" . $row['nombre'] . "</title>";
     }
+}
         ?>
     <link rel="icon" type="image/x-icon" href="img/logos/favicon.png">
     <script>
@@ -60,6 +64,15 @@ include "includes/nav.php"
     <div class="huecocoche">
         
             <?php
+            require_once("php/dbcoches.php");
+
+            if(isset($_GET['id']) && !empty($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
+                $id = $_GET['id'];
+                $stmt = $conn->prepare("SELECT * FROM coches WHERE id=?");
+                $stmt->bind_param("i", $id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $resultCheck = mysqli_num_rows($result);
             
             if($resultCheck > 0) {
                 $row = mysqli_fetch_assoc($result);
@@ -105,6 +118,7 @@ include "includes/nav.php"
                             . "</div>"
                             . "</div>";
             }
+        }
             $stmt->close();
             $conn->close();
             ?>

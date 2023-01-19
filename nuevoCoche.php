@@ -124,8 +124,6 @@ include "includes/nav.php"
             <button type="submit" name="submit">Enviar</button>
         </div>
 
-
-
     </form>
 </div>
 
