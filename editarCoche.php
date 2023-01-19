@@ -57,13 +57,13 @@ include "includes/nav.php"
                 <a>Nombre del coche</a>
             </div>
             <div class="cambiar">
-                <input type="text" name="nombre" id="nombre"">
+                <input type="text" name="nombre" id="nombre">
             </div>
             <div class="cambiar">
                 <a>Marca</a>
             </div>
             <div class="cambiar">
-                <input type="text" name="marca" id="marca"">
+                <input type="text" name="marca" id="marca">
             </div>
             <div class="cambiar">
                 <a>Modelo</a>

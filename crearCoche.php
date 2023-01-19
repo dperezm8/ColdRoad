@@ -7,17 +7,6 @@ $dbName = "cold_road";
 
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-session_start();
-$id = (string) $_SESSION['id'];
-$id = mysqli_real_escape_string($conn, $id);
-$id = (int)$id;
-
-$stmt = $conn->prepare("SELECT * FROM coches WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
-$result = $stmt->get_result();
-$resultCheck = $stmt->num_rows;
-
 $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
 $marca = mysqli_real_escape_string($conn, $_POST['marca']);
 $modelo = mysqli_real_escape_string($conn, $_POST['modelo']);
