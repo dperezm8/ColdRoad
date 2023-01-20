@@ -33,6 +33,7 @@ include "includes/nav.php"
 
         if($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
+                
                 echo "<div class='galeria1'>"
                     . "<a href='coche1.php?id=" . $row['id'] . "'>"
                     . "<img src=" . $row['fotoruta'] . " width='300px'>"
