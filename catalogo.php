@@ -44,9 +44,8 @@ include "includes/nav.php"
     
         if($resultCheck > 0) {
             //Si el número de filas es mayor a 0 procederemos a sacar los datos con el metodo de fetch
-            $row = mysqli_fetch_assoc($result);
             //Si el valor de la variable row (cantidad de filas) es igual a la cantidad de resultados hará echo, este while actua como un foreach
-            while ($row = $result->fetch_assoc()) {
+            while ( $row = mysqli_fetch_assoc($result)) {
                 //Guardaremos el valor del precio del coche en la posicion en la que trabajamos
                 $num = number_format($row['precio'], 0, '', '.'). " €";
                 //Imprimimos el código html junto con la variable para poder imprimir el dato de la base de datos en la zona elegida
