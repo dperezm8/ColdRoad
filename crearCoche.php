@@ -2,7 +2,23 @@
 
 require_once("php/dbcoches.php");
 
-$nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+if(isset($_REQUEST['submit'])) {
+
+$infoCoches = '';
+$archivo = "coches.json";
+
+if(is_file($archivo)) {
+    $data = file_get_contents($archivo);
+}
+$json_arr = json_decode($infoCoches, true);
+
+$json_arr[] = array('nombre' => $_REQUEST['nombre'],'modelo' => $_REQUEST['modelo'],'color' => $_REQUEST['color'],'kilometraje' => $_REQUEST['kilometraje'],'potencia' => $_REQUEST['potencia'],'cilindrada' => $_REQUEST['cilindrada'],'anio' => $_REQUEST['anio'],'transmision' => $_REQUEST['transmision'],'traccion' => $_REQUEST['traccion'],'precio' => $_REQUEST['precio'],'datoscoche' => $_REQUEST['datoscoche'],'foto' => $_REQUEST['foto'],'foto1' => $_REQUEST['foto1'],'foto2' => $_REQUEST['foto2'],'foto3' => $_REQUEST['foto3']);
+
+file_put_contents($archivo, json_encode($json_arr));
+
+}
+
+/*$nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
 $marca = mysqli_real_escape_string($conn, $_POST['marca']);
 $modelo = mysqli_real_escape_string($conn, $_POST['modelo']);
 $color = mysqli_real_escape_string($conn, $_POST['color']);
@@ -18,6 +34,8 @@ $foto = $_FILES['foto'];
 $foto1 = $_FILES['foto1'];
 $foto2 = $_FILES['foto2'];
 $foto3 = $_FILES['foto3'];
+
+*/
 $ruta = 'img/inventario/'.$nombre. " " . $anio;
 $sinfoto = 'img/inventario/cocheNoEncontrado/cocheNoEncontrado.jpg';
 
