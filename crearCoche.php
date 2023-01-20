@@ -1,11 +1,6 @@
 <?php
 
-$dbServername = "127.0.0.1:3306";
-$dbUsername = "root";
-$dbPassword = "";
-$dbName = "cold_road";
-
-$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+require_once("php/dbcoches.php");
 
 $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
 $marca = mysqli_real_escape_string($conn, $_POST['marca']);
