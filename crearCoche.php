@@ -1,97 +1,74 @@
 <?php
-
-require_once("php/dbcoches.php");
-
-if(isset($_REQUEST['submit'])) {
-
-$infoCoches = '';
-$archivo = "coches.json";
-
-if(is_file($archivo)) {
-    $data = file_get_contents($archivo);
-}
-$json_arr = json_decode($infoCoches, true);
-
-$json_arr[] = array('nombre' => $_REQUEST['nombre'],'modelo' => $_REQUEST['modelo'],'color' => $_REQUEST['color'],'kilometraje' => $_REQUEST['kilometraje'],'potencia' => $_REQUEST['potencia'],'cilindrada' => $_REQUEST['cilindrada'],'anio' => $_REQUEST['anio'],'transmision' => $_REQUEST['transmision'],'traccion' => $_REQUEST['traccion'],'precio' => $_REQUEST['precio'],'datoscoche' => $_REQUEST['datoscoche'],'foto' => $_REQUEST['foto'],'foto1' => $_REQUEST['foto1'],'foto2' => $_REQUEST['foto2'],'foto3' => $_REQUEST['foto3']);
-
-file_put_contents($archivo, json_encode($json_arr));
-
-}
-
-/*$nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
-$marca = mysqli_real_escape_string($conn, $_POST['marca']);
-$modelo = mysqli_real_escape_string($conn, $_POST['modelo']);
-$color = mysqli_real_escape_string($conn, $_POST['color']);
-$kilometraje = mysqli_real_escape_string($conn, $_POST['kilometraje']);
-$potencia = mysqli_real_escape_string($conn, $_POST['potencia']);
-$cilindrada = mysqli_real_escape_string($conn, $_POST['cilindrada']);
-$anio = mysqli_real_escape_string($conn, $_POST['anio']);
-$transmision = mysqli_real_escape_string($conn, $_POST['transmision']);
-$traccion = mysqli_real_escape_string($conn, $_POST['traccion']);
-$precio = mysqli_real_escape_string($conn, $_POST['precio']);
-$datoscoche = mysqli_real_escape_string($conn, $_POST['datoscoche']);
-$foto = $_FILES['foto'];
-$foto1 = $_FILES['foto1'];
-$foto2 = $_FILES['foto2'];
-$foto3 = $_FILES['foto3'];
-
-*/
-$ruta = 'img/inventario/'.$nombre. " " . $anio;
-$sinfoto = 'img/inventario/cocheNoEncontrado/cocheNoEncontrado.jpg';
-
-$fotoruta ="";
-$fotoruta1 ="";
-$fotoruta2 ="";
-$fotoruta3 ="";
-
-if(!is_dir($ruta)){
-    $ruta = str_replace(" ", "_",$ruta);
-    mkdir($ruta, 0777, true);
-}
-
-if(move_uploaded_file($foto['tmp_name'], $ruta . "/" . $foto['name'])){
-   $fotoruta = str_replace("../", "",$fotoruta);
-   $fotoruta = $ruta .  "/" . $foto['name'];
-}else{
-    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
-    $fotoruta = str_replace("../", "",$fotoruta);
-    $fotoruta = $sinfoto;
-}
-
-if(move_uploaded_file($foto1['tmp_name'], $ruta . "/" . $foto1['name'])){
-    $fotoruta1 = str_replace("../", "",$fotoruta1);
-   $fotoruta1 = $ruta . "/" . $foto1['name'];
-}else{
-    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
-    $fotoruta1 = str_replace("../", "",$fotoruta1);
-    $fotoruta1 = $sinfoto;
-}
-
-if(move_uploaded_file($foto2['tmp_name'], $ruta . "/" . $foto2['name'])){
-    $fotoruta2 = str_replace("../", "",$fotoruta2);
-    $fotoruta2 = $ruta . "/" . $foto2['name'];
-}else{
-    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
-    $fotoruta2 = str_replace("../", "",$fotoruta2);
-    $fotoruta2 = $sinfoto;
-}
-
-if(move_uploaded_file($foto3['tmp_name'], $ruta . "/" . $foto3['name'])){
-    $fotoruta3 = str_replace("../", "",$fotoruta3);
-    $fotoruta3 = $ruta .  "/" . $foto3['name'];
-}else{
-    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
-    $fotoruta3 = str_replace("../", "",$fotoruta3);
-    $fotoruta3 = $sinfoto;
-}
-
-$sql = "INSERT INTO coches (marca, modelo, color, kilometraje, potencia, cilindrada, anio, transmision, traccion, precio, datoscoche, nombre, fotoruta, fotoruta1, fotoruta2, fotoruta3) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-$stmt = mysqli_stmt_init($conn);
-if(mysqli_stmt_prepare($stmt, $sql)){
-    mysqli_stmt_bind_param($stmt, "sssissssssssssss", $marca, $modelo, $color, $kilometraje, $potencia, $cilindrada, $anio, $transmision, $traccion, $precio, $datoscoche, $nombre, $fotoruta, $fotoruta1, $fotoruta2, $fotoruta3);
-    mysqli_stmt_execute($stmt);
-}
-
-header("Location: nuevoCoche.php?creation=success");
+if(isset($_POST)){
+    // Form fields
+    $nombre = $_POST["nombre"];
+    $marca = $_POST["marca"];
+    $modelo = $_POST["modelo"];
+    $color = $_POST["color"];
+    $kilometraje = $_POST["kilometraje"];
+    $potencia = $_POST["potencia"];
+    $cilindrada = $_POST["cilindrada"];
+    $anio = $_POST["anio"];
+    $transmision = $_POST["transmision"];
+    $traccion = $_POST["traccion"];
+    // File uploads
+    $foto = $_FILES['foto'];
+    $foto1 = $_FILES['foto1'];
+    $foto2 = $_FILES['foto2'];
+    $foto3 = $_FILES['foto3'];
+    // Add other form fields here
+    $allowed = array('jpg', 'jpeg', 'png', 'gif');
+    $foto_name = $foto['name'];
+    $foto = $foto['tmp_name'];
+    $foto_size = $foto['size'];
+    $foto_error = $foto['error'];
+    $foto_ext = explode('.', $foto_name);
+    $foto_ext = strtolower(end($foto_ext));
+    if(in_array($foto_ext, $allowed)) {
+        if($foto_error === 0) {
+            if($foto_size <= 2097152) {
+                $foto_new_name = uniqid('', true) . '.' . $foto_ext;
+                $foto_destination = 'uploads/' . $foto_new_name;
+                move_uploaded_file($foto_tmp, $foto_destination);
+            } else {
+                echo 'File size must be less than 2MB';
+            }
+        } else {
+            echo 'There was an error uploading your image';
+        }
+    } else {
+        echo 'Invalid file type. Please upload a JPG, JPEG, PNG, or GIF';
+    }
+    // repeat for the other two images
+    // Create the car array
+    $coche = array(
+        "nombre" => $nombre,
+        "marca" => $marca,
+        "modelo" => $modelo,
+        "color" => $color,
+        "kilometraje" => $kilometraje,
+        "potencia" => $potencia,
+        "cilindrada" => $cilindrada,
+        "anio" => $anio,
+        "transmision" => $transmision,
+        "traccion" => $traccion,
+        "foto" => $foto_destination,
+        "foto1" => $foto1_destination,
+        "foto2" => $foto2_destination,
+        "foto3" => $foto3_destination,
+        // Add other form fields here
+        );
+        // Read the JSON file
+        $json_file = 'coches.json';
+        $json_data = file_get_contents($json_file);
+        $json_array = json_decode($json_data, true);
+        // Add the car to the JSON array
+        array_push($json_array, $coche);
+        // Encode the array and write it back to the JSON file
+        $json_data = json_encode($json_array);
+        file_put_contents($json_file, $json_data);
+        // Redirect the user to the index page
+        header("Location: index.php");
+        }
+        
+        
