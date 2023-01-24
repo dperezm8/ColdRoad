@@ -40,6 +40,8 @@ $jsonData = json_encode($existingData);
 // Write the JSON data to the file
 file_put_contents("coches.json", $jsonData);
 
+
+// a partir de aqui es la insercion de lo scontendidos del json en la base de datos, de momento no funciona
 $jsonInfo = file_get_contents("coches.json");
 $carros = json_decode($jsonInfo, JSON_OBJECT_AS_ARRAY);
 
