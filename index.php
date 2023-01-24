@@ -23,14 +23,22 @@ include "includes/nav.php"
             <a>CANTIDAD DE COCHES EN STOCK:
                 <STRONG>
                 <?php
+            //Usamos require once ya que no queremos una conexión constante, recogemos los datos
+            //de la base de datos y salimos
             require_once("php/dbcoches.php");
+            //Creamos una variable statement para mandar el query a la base de datos
             $stmt = $conn->prepare("SELECT COUNT(id) FROM coches");
             $stmt->execute();
+            //Saco el resultado del query y lo guardo en la variable result, todo el contenido total
             $result = $stmt->get_result();
+            //Resultcheck devuelve el número de filas que hay en el resultado del query
             $resultCheck = mysqli_num_rows($result);
         
+            //Si el número de filas es mayor a 0 procedemos a sacar datos de la base de datos
             if($resultCheck > 0) {
+                //Dentro de row dime una fila dentro del parametro seleccionado
                 $row = mysqli_fetch_assoc($result);
+                //Hacemos echo de un parámetro dentro del array asociativo "row" 
                 echo $row['COUNT(id)'];
             }
             ?>
@@ -44,15 +52,21 @@ include "includes/nav.php"
         </div>
         <div class="cocheindex">
             <?php
+            //Usamos require once ya que no queremos una conexión constante, recogemos los datos
+            //de la base de datos y salimos
             require_once("php/dbcoches.php");
-    
+            //Almacenamiento de los datos recogidos al ejecutar el query a la base de datos
+            //Dado que queremos imprimir una imagen aleatoria cada vez que iniciemos la página, vamos a pedir una fila de datos aleatoria
             $result = $conn->query("SELECT * FROM coches ORDER BY RAND();");
-    
+            //Contamos el número de lineas que hay en el resultado del query
             $resultCheck = mysqli_num_rows($result);
                     if ($resultCheck>0) {
+                        //Almacenamos en un array asociativo los resultados del query
                         $row = mysqli_fetch_assoc($result);
+                        //Hacemos echo del parámetro fotoruta del array asociativo row ya que queremos imprimir una imagen
                         echo "<img src=" . $row['fotoruta'] . " width='400px'>";
             }
+            //Cerramos el statement y la conexión
             $stmt->close();
             $conn->close();
             ?>
