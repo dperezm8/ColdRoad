@@ -40,4 +40,43 @@ $jsonData = json_encode($existingData);
 // Write the JSON data to the file
 file_put_contents("coches.json", $jsonData);
 
+$jsonInfo = file_get_contents("coches.json");
+$carros = json_decode($jsonInfo, JSON_OBJECT_AS_ARRAY);
+
+$stmt = $conn->prepare("
+    INSERT INTO coches(nombre, marca, modelo, color, kilometraje, potencia, cilindrada, anio, transmision, traccion, precio, datoscoche, foto, foto1, foto2, foto3)
+    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+    ");
+
+    $stmt->bind_param("ssdi", $nombre, $marca, $modelo, $color, $kilometraje, $potencia, $cilindrada, $anio, $transmision, $traccion, $precio, $datoscoche, $foto, $foto1, $foto2, $foto3);
+
+$inserted_rows = 0;
+foreach($carros as $coche) {
+    $nombre = $coche["nombre"];
+    $marca = $coche["marca"];
+    $modelo = $coche["modelo"];
+    $color = $coche["color"];
+    $kilometraje = $coche["kilometraje"];
+    $potencia = $coche["potencia"];
+    $cilindrada = $coche["cilindrada"];
+    $anio = $coche["anio"];
+    $transmision = $coche["transmision"];
+    $traccion = $coche["traccion"];
+    $precio = $coche["precio"];
+    $datoscoche = $coche["datoscoche"];
+    $foto = $coche["foto"];
+    $foto1 = $coche["foto1"];
+    $foto2 = $coche["foto2"];
+    $foto3 = $coche["foto3"];
+
+    $stmt->execute();
+$inserted_rows ++;
+}
+
+if(count($carros) == $inserted_rows) {
+    echo "success";
+} else {
+    echo "error";
+}
+
 header("Location: nuevoCoche.php?creation=success");
