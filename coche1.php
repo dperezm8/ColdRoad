@@ -73,7 +73,7 @@ include "includes/nav.php"
                 $id = $_GET['id'];
                 //Guardamos el query en el statement para sacar los datos de un coche determinado por una id específica
                 $stmt = $conn->prepare("SELECT * FROM coches WHERE id=?");
-                //
+                //La funcion bind_param va a enlazar la id a la query anterior
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
                 //Guardamos todo lo conseguido
