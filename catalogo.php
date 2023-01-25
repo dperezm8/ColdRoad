@@ -32,18 +32,18 @@ include "includes/nav.php"
         // La variable statement guardará el query que vamos a usar en esta página.
         $stmt = $conn->prepare("SELECT * FROM coches");
         $stmt->execute();
-        // Resultado es el valor que devuelve la base de datos, 1 si se ha hecho correctamente y existe la base de datos, 0 si no.
+        // Saco el resultado del query y lo guardo en la variable result
         $result = $stmt->get_result();
-        // Resulcheck compurueba el numero de filas que hay en la base de datos
+        // Resulcheck devuelve el numero de filas que hay en el resultado del query
         $resultCheck = mysqli_num_rows($result);
         
-        //Si el número de filas es mayor a 0 procederemos a sacar los datos con el metodo de fetch
+        //Si el número de filas es mayor a 0 procedemos
         if($resultCheck > 0) {
-            //Si el valor de la variable row (cantidad de filas) es igual a la cantidad de resultados hará echo, este while actua como un foreach
+            //Por cada fila que haya en el resultado de datos de la base de datos vamos a imprimir datos en la pagina web
             while ($row = mysqli_fetch_assoc($result)) {
-                //Guardaremos el valor del precio del coche en la posicion en la que trabajamos
+                //Sacamos la fila del resultado donde se encuentra el valor del precio y lo imprimiremos de forma personalizada
                 $num = number_format($row['precio'], 0, '', '.'). " €";
-                //Imprimimos el código html junto con la variable para poder imprimir el dato de la base de datos en la zona elegida
+                //Imprimimos el codigo html en conjunto a los datos sacados dependiendo del parametro en las filas del resultado del query
                 echo "<div class='coche'>"
                         . "<img src=" . $row['fotoruta'] . " width='300px'>"
                         ."<div class='nombreCatalogo'><a>"

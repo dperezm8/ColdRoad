@@ -65,7 +65,7 @@ include "includes/nav.php"
         
             <?php
             require_once("php/dbcoches.php");
-
+            //PREGUNTAR QUE HACE ESTE IF
             if(isset($_GET['id']) && !empty($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
                 $id = $_GET['id'];
                 $stmt = $conn->prepare("SELECT * FROM coches WHERE id=?");

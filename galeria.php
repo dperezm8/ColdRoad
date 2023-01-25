@@ -23,15 +23,19 @@ include "includes/nav.php"
         <div class='columnagaleria1'>
         
         <?php
+        //Entramos a la base de datos recogemos los datos necesarios y salimos
         require_once("php/dbcoches.php");
         
-        // prepare and bind
+        //Guardamos la query para sacar los datos de todos los coches de la tabla coches y posteriormente la ejecutamos
         $stmt = $conn->prepare("SELECT * FROM coches");
         $stmt->execute();
+        //Guardamos el resultado de la query en la variable resut
         $result = $stmt->get_result();
+        //Guardamos la cuenta de todas las filas de los datos obtenidos con el query
         $resultCheck = mysqli_num_rows($result);
 
         if($resultCheck > 0) {
+            //Repetimos el proceso para cada fila en el resultado del query
             while ($row = mysqli_fetch_assoc($result)) {
                 
                 echo "<div class='galeria1'>"
@@ -48,6 +52,7 @@ include "includes/nav.php"
                 . "</div>";
             }
         }
+        //cerramos el query y la conexion
         $stmt->close();
         $conn->close();
         ?>
