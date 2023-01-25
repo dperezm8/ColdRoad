@@ -1,0 +1,138 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 25, 2023 at 09:36 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+CREATE database cold_road;
+
+--
+-- Database: `cold_road`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coches`
+--
+
+Use cold_road
+Go
+
+CREATE TABLE `coches` (
+  `id` int(11) NOT NULL,
+  `marca` varchar(255) NOT NULL,
+  `modelo` varchar(255) NOT NULL,
+  `color` varchar(255) NOT NULL,
+  `kilometraje` int(6) NOT NULL,
+  `potencia` int(3) NOT NULL,
+  `cilindrada` int(4) NOT NULL,
+  `anio` year(4) NOT NULL,
+  `transmision` varchar(10) NOT NULL,
+  `traccion` varchar(3) NOT NULL,
+  `precio` float NOT NULL,
+  `datoscoche` text DEFAULT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `fotoruta` varchar(255) DEFAULT NULL,
+  `fotoruta1` varchar(255) DEFAULT NULL,
+  `fotoruta2` varchar(255) DEFAULT NULL,
+  `fotoruta3` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacto`
+--
+
+CREATE TABLE `contacto` (
+  `id` int(43) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `coche` varchar(40) NOT NULL,
+  `comentario` varchar(512) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `permiso` int(5) NOT NULL,
+  `nombre` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `mail`, `pass`, `permiso`, `nombre`) VALUES
+(1, 'diego1@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 3, 'diego1'),
+(2, 'diego2@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'diego2');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `coches`
+--
+ALTER TABLE `coches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contacto`
+--
+ALTER TABLE `contacto`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `coches`
+--
+ALTER TABLE `coches`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `contacto`
+--
+ALTER TABLE `contacto`
+  MODIFY `id` int(43) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
