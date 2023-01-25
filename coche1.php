@@ -65,12 +65,18 @@ include "includes/nav.php"
         
             <?php
             require_once("php/dbcoches.php");
-            //PREGUNTAR QUE HACE ESTE IF
+            // Con el if, primero recibimos el id de del href de las imagenes en la galeria
+            // Confirma que no está vacio
+            // Con filter var comprobamos que un valor es del tipo que preguntamos en la propia funcion
             if(isset($_GET['id']) && !empty($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)){
+                // Guardamos la id que hemos filtrado en una variable
                 $id = $_GET['id'];
+                //Guardamos el query en el statement para sacar los datos de un coche determinado por una id específica
                 $stmt = $conn->prepare("SELECT * FROM coches WHERE id=?");
+                //
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
+                //Guardamos todo lo conseguido
                 $result = $stmt->get_result();
                 $resultCheck = mysqli_num_rows($result);
             
