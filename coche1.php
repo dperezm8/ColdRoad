@@ -76,12 +76,16 @@ include "includes/nav.php"
                 //
                 $stmt->bind_param("i", $id);
                 $stmt->execute();
-                //Guardamos todo lo conseguido
+                //Guardamos todo lo conseguido en la variable result
                 $result = $stmt->get_result();
+                // Numero de filas que hay en el resultado del query
                 $resultCheck = mysqli_num_rows($result);
             
+            //Si el resultado del query tienes mas de 0 filas procedemos
             if($resultCheck > 0) {
+                //Dentro de row dime una fila dentro del parametro seleccionado
                 $row = mysqli_fetch_assoc($result);
+                //La variable num guardara la extracción del dato que queremos dentro del query pero personalizado para que se imprimir en el html como nosotros queramos
                 $num = number_format($row['precio'], 0, '', '.'). " €";
                     echo "<div class='fotosanunciocoche'>"
                         . "<div class='bloquefotos'>"
@@ -125,6 +129,8 @@ include "includes/nav.php"
                             . "</div>";
             }
         }
+
+            //Cerramos el query y la conexion con la base de datos
             $stmt->close();
             $conn->close();
             ?>
