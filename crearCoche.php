@@ -1,84 +1,70 @@
 <?php
 require_once("php/dbcoches.php");
 
-$formData = array(
-    "nombre" => $_POST["nombre"],
-    "marca" => $_POST["marca"],
-    "modelo" => $_POST["modelo"],
-    "color" => $_POST["color"],
-    "kilometraje" => $_POST["kilometraje"],
-    "potencia" => $_POST["potencia"],
-    "cilindrada" => $_POST["cilindrada"],
-    "anio" => $_POST["anio"],
-    "transmision" => $_POST["transmision"],
-    "traccion" => $_POST["traccion"],
-    "precio" => $_POST["precio"],
-    "datoscoche" => $_POST["datoscoche"],
-    "foto" => $_FILES["foto"],
-    "foto1" => $_FILES["foto1"],
-    "foto2" => $_FILES["foto2"],
-    "foto3" => $_FILES["foto3"],
-    // etc.
-);
-
-// Check if the data.json file exists
-if (file_exists("coches.json")) {
-    // Read existing data from the file
-    $existingData = json_decode(file_get_contents("coches.json"), true);
-    
-} else {
-    // Create a new array to store the data
-    $existingData = array();
+require_once("php/dbcoches.php");
+$nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+$marca = mysqli_real_escape_string($conn, $_POST['marca']);
+$modelo = mysqli_real_escape_string($conn, $_POST['modelo']);
+$color = mysqli_real_escape_string($conn, $_POST['color']);
+$kilometraje = mysqli_real_escape_string($conn, $_POST['kilometraje']);
+$potencia = mysqli_real_escape_string($conn, $_POST['potencia']);
+$cilindrada = mysqli_real_escape_string($conn, $_POST['cilindrada']);
+$anio = mysqli_real_escape_string($conn, $_POST['anio']);
+$transmision = mysqli_real_escape_string($conn, $_POST['transmision']);
+$traccion = mysqli_real_escape_string($conn, $_POST['traccion']);
+$precio = mysqli_real_escape_string($conn, $_POST['precio']);
+$datoscoche = mysqli_real_escape_string($conn, $_POST['datoscoche']);
+$foto = $_FILES['foto'];
+$foto1 = $_FILES['foto1'];
+$foto2 = $_FILES['foto2'];
+$foto3 = $_FILES['foto3'];
+$ruta = 'img/inventario/'.$nombre. " " . $anio;
+$sinfoto = 'img/inventario/cocheNoEncontrado/cocheNoEncontrado.jpg';
+$fotoruta ="";
+$fotoruta1 ="";
+$fotoruta2 ="";
+$fotoruta3 ="";
+if(!is_dir($ruta)){
+    $ruta = str_replace(" ", "_",$ruta);
+    mkdir($ruta, 0777, true);
 }
-
-// Add the new form data to the existing data
-$existingData[] = $formData;
-
-// Convert the updated data to JSON
-$jsonData = json_encode($existingData);
-
-// Write the JSON data to the file
-file_put_contents("coches.json", $jsonData);
-
-
-// a partir de aqui es la insercion de los contendidos del json en la base de datos, de momento no funciona
-$jsonInfo = file_get_contents("coches.json");
-$carros = json_decode($jsonInfo, JSON_OBJECT_AS_ARRAY);
-
-$stmt = $conn->prepare("
-    INSERT INTO coches(nombre, marca, modelo, color, kilometraje, potencia, cilindrada, anio, transmision, traccion, precio, datoscoche, foto, foto1, foto2, foto3)
-    VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-    ");
-
-    $stmt->bind_param("ssdi", $nombre, $marca, $modelo, $color, $kilometraje, $potencia, $cilindrada, $anio, $transmision, $traccion, $precio, $datoscoche, $foto, $foto1, $foto2, $foto3);
-
-$inserted_rows = 0;
-foreach($carros as $coche) {
-    $nombre = $coche["nombre"];
-    $marca = $coche["marca"];
-    $modelo = $coche["modelo"];
-    $color = $coche["color"];
-    $kilometraje = $coche["kilometraje"];
-    $potencia = $coche["potencia"];
-    $cilindrada = $coche["cilindrada"];
-    $anio = $coche["anio"];
-    $transmision = $coche["transmision"];
-    $traccion = $coche["traccion"];
-    $precio = $coche["precio"];
-    $datoscoche = $coche["datoscoche"];
-    $foto = $coche["foto"];
-    $foto1 = $coche["foto1"];
-    $foto2 = $coche["foto2"];
-    $foto3 = $coche["foto3"];
-
-    $stmt->execute();
-$inserted_rows ++;
+if(move_uploaded_file($foto['tmp_name'], $ruta . "/" . $foto['name'])){
+   $fotoruta = str_replace("../", "",$fotoruta);
+   $fotoruta = $ruta .  "/" . $foto['name'];
+}else{
+    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
+    $fotoruta = str_replace("../", "",$fotoruta);
+    $fotoruta = $sinfoto;
 }
-
-if(count($carros) == $inserted_rows) {
-    echo "success";
-} else {
-    echo "error";
+if(move_uploaded_file($foto1['tmp_name'], $ruta . "/" . $foto1['name'])){
+    $fotoruta1 = str_replace("../", "",$fotoruta1);
+   $fotoruta1 = $ruta . "/" . $foto1['name'];
+}else{
+    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
+    $fotoruta1 = str_replace("../", "",$fotoruta1);
+    $fotoruta1 = $sinfoto;
 }
-
+if(move_uploaded_file($foto2['tmp_name'], $ruta . "/" . $foto2['name'])){
+    $fotoruta2 = str_replace("../", "",$fotoruta2);
+    $fotoruta2 = $ruta . "/" . $foto2['name'];
+}else{
+    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
+    $fotoruta2 = str_replace("../", "",$fotoruta2);
+    $fotoruta2 = $sinfoto;
+}
+if(move_uploaded_file($foto3['tmp_name'], $ruta . "/" . $foto3['name'])){
+    $fotoruta3 = str_replace("../", "",$fotoruta3);
+    $fotoruta3 = $ruta .  "/" . $foto3['name'];
+}else{
+    copy("img/inventario/PredeterminedFiles/", $ruta . $foto['name'] . "noEncontrado");
+    $fotoruta3 = str_replace("../", "",$fotoruta3);
+    $fotoruta3 = $sinfoto;
+}
+$sql = "INSERT INTO coches (marca, modelo, color, kilometraje, potencia, cilindrada, anio, transmision, traccion, precio, datoscoche, nombre, fotoruta, fotoruta1, fotoruta2, fotoruta3)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = mysqli_stmt_init($conn);
+if(mysqli_stmt_prepare($stmt, $sql)){
+    mysqli_stmt_bind_param($stmt, "sssissssssssssss", $marca, $modelo, $color, $kilometraje, $potencia, $cilindrada, $anio, $transmision, $traccion, $precio, $datoscoche, $nombre, $fotoruta, $fotoruta1, $fotoruta2, $fotoruta3);
+    mysqli_stmt_execute($stmt);
+}
 header("Location: nuevoCoche.php?creation=success");
